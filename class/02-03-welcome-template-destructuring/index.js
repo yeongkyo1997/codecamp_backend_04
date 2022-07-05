@@ -4,7 +4,7 @@ const banana = 2;
 console.log("철수는 사과를 " + apple + "개, " + banana + "개 가지고 있습니다.");
 console.log(`철수는 사과를 ${apple}개, 바나나를 ${banana}개 가지고 있습니다.`);
 
-function getWelcomTemplate(name, age, school, createdAt) {
+function getWelcomTemplate({ name, age, school, createdAt }) {
   const mytemplate = `
     <html>
       <body>
@@ -19,9 +19,9 @@ function getWelcomTemplate(name, age, school, createdAt) {
   `;
   console.log(mytemplate);
 }
-const myname = "훈이";
-const myage = 12;
-const myschool = "공룡초등학교";
-const mycreatedAt = new Date();
+const name = "훈이";
+const age = 12;
+const school = "공룡초등학교";
+const createdAt = new Date();
 
-getWelcomTemplate(myname, myage, myschool, mycreatedAt);
+getWelcomTemplate({ name, age, school, createdAt });
