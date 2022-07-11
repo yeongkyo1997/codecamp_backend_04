@@ -1,4 +1,4 @@
-import { getToday } from "./utils.js";
+import { getToday } from "./util.js";
 import nodemailer from "nodemailer";
 import "dotenv/config";
 
