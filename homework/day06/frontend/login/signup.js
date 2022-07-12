@@ -26,7 +26,7 @@ const submitSignup = async () => {
   const securityNum2 = document.getElementsByClassName("SignupInput")[2].value;
   const personalNum = [...securityNum1, ...securityNum2];
   const likeSite = document.getElementById("SignupPrefer").value;
-  const passWord = document.getElementById("SignupPwd").value;
+  const password = document.getElementById("SignupPwd").value;
   const email = document.getElementById("SignupEmail").value;
 
   console.log(phoneNum);
@@ -37,7 +37,7 @@ const submitSignup = async () => {
         phone: phoneNum,
         personalNum: personalNum,
         likeSite: likeSite,
-        passWord: passWord,
+        password: password,
         email: email,
       },
     })
