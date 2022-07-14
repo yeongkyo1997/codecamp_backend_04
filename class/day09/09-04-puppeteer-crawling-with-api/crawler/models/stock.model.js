@@ -1,9 +1,9 @@
-import mongoose from "mongoose"
+import mongoose from "mongoose";
 
 const StockSchema = new mongoose.Schema({
-    name: String,
-    date: Date,
-    price: Number
-})
+  name: String,
+  date: Date,
+  price: Number,
+});
 
-export const Stock = mongoose.model("Stock", StockSchema)
+export const Stock = mongoose.model("Stock", StockSchema);

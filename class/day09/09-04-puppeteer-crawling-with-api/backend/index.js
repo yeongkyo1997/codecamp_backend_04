@@ -98,9 +98,9 @@ app.post("/users", (req, res) => {
 });
 
 app.get("/stocks", async (req, res) => {
-  const stocks = await Stock.find()
-  res.send(stocks)
-})
+  const stocks = await Stock.find();
+  res.send(stocks);
+});
 
 // mongoDB 접속
 mongoose.connect("mongodb://my-database:27017/mydocker04");
