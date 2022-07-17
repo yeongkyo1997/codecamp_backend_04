@@ -9,9 +9,9 @@ services:
     # nodemon이 도커에도 적용되게 한다.
     # [로컬 컴퓨터]:[도커 컴퓨터]
     volumes:
-      - ./index.js:/myfolder/index.js
-      - ./email.js:/myfolder/email.js
-      - ./swagger:/myfolder/swagger
+      - ./index.js:/mini-project/index.js
+      - ./email.js:/mini-project/email.js
+      - ./swagger:/mini-project/swagger
     ports:
       - 3000:3000
 

@@ -107,7 +107,7 @@ app.post("/tokens/phone", async (req, res) => {
       });
       await newToken.save();
     }
-    sendTokenToSMS(phone, mytoken); // coolsms로 토큰 전송 받기
+    // sendTokenToSMS(phone, mytoken); // coolsms로 토큰 전송 받기
 
     res.send(
       `${phone.slice(0, 3)}-${phone.slice(3, 7)}-${phone.slice(

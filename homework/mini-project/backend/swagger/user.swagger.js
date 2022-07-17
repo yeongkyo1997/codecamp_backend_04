@@ -14,12 +14,15 @@
  *                              items:
  *                                  type: object
  *                                  properties:
+ *                                      _id:
+ *                                          type: string
+ *                                          example: "62d3dd6454bd0c8a4abd3344"
  *                                      name:
  *                                          type: string
  *                                          example: 인영교
  *                                      email:
  *                                          type: string
- *                                          example: abc123@gmail.com
+ *                                          example: yeong1997@gmail.com
  *                                      personal:
  *                                          type: string
  *                                          example: 970101-1234567
@@ -28,7 +31,7 @@
  *                                          example: 1234**
  *                                      phone:
  *                                          type: string
- *                                          example: "01012341234"
+ *                                          example: "01085261375"
  *                                      prefer:
  *                                          type: string
  *                                          example: https://www.naver.com
@@ -44,6 +47,9 @@
  *                                              imageURL:
  *                                                  type: string
  *                                                  example: "naver.jpg"
+ *                                      __v:
+ *                                          type: number
+ *                                          example: 0
  */
 
 /**
@@ -64,7 +70,7 @@
  *                                          example: 인영교
  *                                      email:
  *                                          type: string
- *                                          example: abcd@gmail.com
+ *                                          example: yeongkyo1997@gmail.com
  *                                      personal:
  *                                          type: string
  *                                          example: 970606-1234567
@@ -76,7 +82,7 @@
  *                                          example: 123466
  *                                      phone:
  *                                          type: string
- *                                          example: "01012341234"
+ *                                          example: "01085261375"
  *
  *
  *

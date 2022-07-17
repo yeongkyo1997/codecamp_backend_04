@@ -56,7 +56,7 @@
  *                  content:
  *                      application/json:
  *                          schema:
- *                              type: string
- *                              example: 인증완료
+ *                              type: boolean
+ *                              example: true
  *
  */
