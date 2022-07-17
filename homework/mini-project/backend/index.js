@@ -31,16 +31,16 @@ app.post("/user", async (req, res) => {
   const member = { ...req.body };
   const prefer = member.prefer;
   const resident = member.personal.split("-")[0] + "-" + "******"; // 주민번호 암호화
-  const og = await scrapingOG(prefer);
   const memberPhone = await Token.findOne({ phone: member.phone });
   const emailIsValid = checkValidationEmail(member.email);
 
   if (memberPhone === null) {
-    res.status(422).send("핸드폰을 입력해주세요");
+    res.status(422).send("핸드폰 번호를 확인해주세요.");
   }
   if (memberPhone.isAuth === false) {
     res.status(422).send("인증번호가 틀렸습니다.");
   } else {
+    const og = await scrapingOG(prefer);
     const newUser = new User({
       name: member.name,
       email: member.email,
@@ -74,6 +74,7 @@ app.patch("/tokens/phone", async (req, res) => {
   }
 
   if (checkMyphone.token !== token) {
+    await Token.updateOne({ phone }, { isAuth: false });
     res.send(false);
     return;
   }

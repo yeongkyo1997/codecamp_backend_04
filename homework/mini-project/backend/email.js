@@ -1,4 +1,3 @@
-import { getToday } from "./utils.js";
 import nodemailer from "nodemailer";
 import "dotenv/config.js";
 
@@ -11,7 +10,7 @@ export function checkValidationEmail(myemail) {
   }
 }
 
-export function getWelcomeTemplate({ name, age, school }) {
+export function getWelcomeTemplate({ name }) {
   const mytemplate = `
         <html>
             <body>
