@@ -42,7 +42,7 @@ export async function sendTemplateToEmail(myemail, result) {
   });
 
   const response = await transporter.sendMail({
-    from: EMAIL_USER,
+    from: EMAIL_SENDER,
     to: myemail,
     subject: "[코드캠프] 가입을 축하합니다!!!",
     html: result,
