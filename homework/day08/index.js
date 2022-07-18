@@ -1,20 +1,20 @@
-import express, { application } from "express";
-import Token from "./models/token.model.js";
-import mongoose from "mongoose";
-import { checkValidationPhone, getToken, sendTokenToSMS } from "./phone";
+import express, { application } from "express"
+import Token from "./models/token.model.js"
+import mongoose from "mongoose"
+import { checkValidationPhone, getToken, sendTokenToSMS } from "./phone"
 
-const app = express();
-app.use(express.json());
+const app = express()
+app.use(express.json())
 
 app.patch("/tokens/phone", async (req, res) => {
-  const myphone = req.body.phone;
+  const myphone = req.body.phone
 
-  const isValid = checkValidationPhone(myphone);
+  const isValid = checkValidationPhone(myphone)
   if (isValid === false) {
-    return;
+    return
   }
-  const mytoken = getToken();
+  const mytoken = getToken()
 
-  sendTokenToSMS(myphone, mytoken);
-  res.send("인증완료!!!");
-});
+  sendTokenToSMS(myphone, mytoken)
+  res.send("인증완료!!!")
+})

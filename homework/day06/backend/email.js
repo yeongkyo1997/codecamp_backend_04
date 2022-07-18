@@ -1,14 +1,14 @@
-import { getToday } from "./util.js";
-import nodemailer from "nodemailer";
-import "dotenv/config";
+import { getToday } from "./util.js"
+import nodemailer from "nodemailer"
+import "dotenv/config"
 
 // 1. 이메일이 정상인지 확인(1-존재여부, 2-"@"포함여부)
 export function checkValidationEmail(email) {
   if (email.includes("@")) {
-    return true;
+    return true
   } else {
-    console.log("에러발생. 이메일을 제대로 입력해주세요.");
-    return false;
+    console.log("에러발생. 이메일을 제대로 입력해주세요.")
+    return false
   }
 }
 
@@ -29,14 +29,14 @@ export function getWelcomeTemplate({ name, phone, likeSite }) {
                     </div>
                 </body> 
             </html>
-    `;
+    `
 }
 
 // 3. 이메일에 가입환영 템플릿 전송하기
 export async function sendTemplateToEmail(email, mytemplate) {
-  const EMAIL_USER = process.env.EMAIL_USER;
-  const EMAIL_PASS = process.env.EMAIL_PASS;
-  const EMAIL_SENDER = process.env.EMAIL_SENDER;
+  const EMAIL_USER = process.env.EMAIL_USER
+  const EMAIL_PASS = process.env.EMAIL_PASS
+  const EMAIL_SENDER = process.env.EMAIL_SENDER
 
   const transporter = nodemailer.createTransport({
     service: "gmail",
@@ -44,12 +44,12 @@ export async function sendTemplateToEmail(email, mytemplate) {
       user: EMAIL_USER,
       pass: EMAIL_PASS,
     },
-  });
+  })
   const result = await transporter.sendMail({
     from: EMAIL_SENDER,
     to: email,
     subject: "[코드캠프] 가입을 축하합니다!!!",
     html: mytemplate,
-  });
-  console.log(result);
+  })
+  console.log(result)
 }

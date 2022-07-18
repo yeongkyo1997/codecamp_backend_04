@@ -1,13 +1,13 @@
-import express from "express";
-import swaggerUi from "swagger-ui-express";
-import swaggerJSDoc from "swagger-jsdoc";
-import { options } from "./swagger/config.js";
-import cors from "cors";
-const app = express();
+import express from "express"
+import swaggerUi from "swagger-ui-express"
+import swaggerJSDoc from "swagger-jsdoc"
+import { options } from "./swagger/config.js"
+import cors from "cors"
+const app = express()
 
-app.use(express.json());
-app.use(cors());
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)));
+app.use(express.json())
+app.use(cors())
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerJSDoc(options)))
 app.get("/users", (req, res) => {
   const result = [
     {
@@ -45,9 +45,9 @@ app.get("/users", (req, res) => {
       personal: "493823-89326",
       prefer: "https://apple.com",
     },
-  ];
-  res.send(result);
-});
+  ]
+  res.send(result)
+})
 
 app.get("/starbucks", (req, res) => {
   let result = [
@@ -91,10 +91,10 @@ app.get("/starbucks", (req, res) => {
       name: "오트라떼",
       kcal: 300,
     },
-  ];
-  res.send(result);
-});
+  ]
+  res.send(result)
+})
 
 app.listen(3000, () => {
-  console.log("연결되었습니다.");
-});
+  console.log("연결되었습니다.")
+})

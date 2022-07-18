@@ -1,15 +1,15 @@
-import express from "express";
-import cors from "cors";
-import { sendTokenToSMS, getToken, checkValidationPhone } from "./phone.js";
+import express from "express"
+import cors from "cors"
+import { sendTokenToSMS, getToken, checkValidationPhone } from "./phone.js"
 import {
   checkValidationEmail,
   getWelcomeTemplate,
   sendTemplateToEmail,
-} from "./email.js";
+} from "./email.js"
 
-const app = express();
-app.use(cors());
-app.use(express.json());
+const app = express()
+app.use(cors())
+app.use(express.json())
 app.get("/users", (req, res) => {
   const result = [
     {
@@ -47,9 +47,9 @@ app.get("/users", (req, res) => {
       personal: "493823-89326",
       prefer: "https://apple.com",
     },
-  ];
-  res.send(result);
-});
+  ]
+  res.send(result)
+})
 
 app.get("/starbucks", (req, res) => {
   let result = [
@@ -63,37 +63,37 @@ app.get("/starbucks", (req, res) => {
     { name: "에스프레소", kcal: 1 },
     { name: "디카페인", kcal: 5 },
     { name: "오트라떼", kcal: 300 },
-  ];
-  res.send(result);
-});
+  ]
+  res.send(result)
+})
 
 app.post("/tokens/phone", (req, res) => {
-  const myphone = req.body.phone;
+  const myphone = req.body.phone
 
-  const isValid = checkValidationPhone(myphone);
+  const isValid = checkValidationPhone(myphone)
   if (isValid) {
-    const mytoken = getToken();
+    const mytoken = getToken()
 
-    sendTokenToSMS(myphone, mytoken);
-    res.send("인증완료");
+    sendTokenToSMS(myphone, mytoken)
+    res.send("인증완료")
   }
-});
+})
 
 app.post("/email", (req, res) => {
-  const user = req.body.myuser;
+  const user = req.body.myuser
 
   // 1. 이메일이 정상인지 확인(1-존재여부, 2-"@"포함여부)
-  const isValid = checkValidationEmail(user.email);
+  const isValid = checkValidationEmail(user.email)
   if (isValid) {
     // 2. 가입환영 템플릿 만들기
-    const mytemplate = getWelcomeTemplate(user);
+    const mytemplate = getWelcomeTemplate(user)
 
     // 3. 이메일에 가입환영 템플릿 전송하기
-    sendTemplateToEmail(user.email, mytemplate);
-    res.send("가입완료!!!");
+    sendTemplateToEmail(user.email, mytemplate)
+    res.send("가입완료!!!")
   }
-});
+})
 
 app.listen(3000, () => {
-  console.log("연결되었습니다.");
-});
+  console.log("연결되었습니다.")
+})
