@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from "mongoose"
 
 const UserSchema = new mongoose.Schema({
   name: String,
@@ -7,6 +7,6 @@ const UserSchema = new mongoose.Schema({
   prefer: String,
   phone: String,
   og: Object,
-});
+})
 
-export const User = mongoose.model("user", UserSchema);
+export const User = mongoose.model("user", UserSchema)

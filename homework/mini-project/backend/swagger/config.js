@@ -7,4 +7,4 @@ export const options = {
     },
   },
   apis: ["./swagger/*.swagger.js"], // files containing annotations as above
-};
+}
