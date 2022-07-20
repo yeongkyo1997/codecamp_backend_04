@@ -45,13 +45,13 @@ const createUserDiv = (data) => {
 
   const ogTitleItem = document.createElement("div")
   ogTitleItem.className = "Og_Item_Title"
-  ogTitleItem.textContent = data?.og?.title || "코드캠프"
+  ogTitleItem.textContent = data?.og?.title || "미니프로젝트"
 
   const ogDescItem = document.createElement("div")
   ogDescItem.className = "Og_Item_Info"
   ogDescItem.textContent =
     data?.og?.description ||
-    "개발회사에서 만든 실무 코딩 부트캠프 || 개발자로 커리어점프 하다."
+    "취업 준비 미니프로젝트"
 
   // 합체
   const menuBack = document.querySelector("#User_Data_Wrapper")
