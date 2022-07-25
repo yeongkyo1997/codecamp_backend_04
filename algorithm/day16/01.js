@@ -2,7 +2,6 @@
 function solution(a, b) {
   let d31 = [1, 3, 5, 7, 8, 10, 12];
   let d30 = [4, 6, 9, 11];
-  let d29 = [2];
   let answer;
   let dict = {
     1: "FRI",
