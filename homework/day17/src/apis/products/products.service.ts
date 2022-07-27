@@ -4,41 +4,42 @@ import { Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
 
 @Injectable()
-export class ProductsService {
+export class ProductService {
   constructor(
     @InjectRepository(Product)
-    private readonly productsRepository: Repository<Product>,
+    private readonly productRepository: Repository<Product>,
   ) {}
 
-  // 전체조회
-  async findAll() {
-    return await this.productsRepository.find();
+  findAll() {
+    return this.productRepository.find();
   }
 
-  // 하나만 조회
-  async findOne({ productId }) {
-    return await this.productsRepository.findOne({ where: { id: productId } });
+  findOne(productId) {
+    return this.productRepository.findOne({ where: { id: productId } });
   }
 
   async create({ createProductInput }) {
-    const result = await this.productsRepository.save({
+    const result = await this.productRepository.save({
       ...createProductInput,
     });
+
     return result;
   }
 
-  // 상품 수정
   async update({ productId, updateProductInput }) {
-    const myproduct = await this.productsRepository.findOne({
+    // 수정할때만 사용
+    // this.productRepository.update({ id: productId }, { ...updateProductInput });
+
+    // 수정 후 결과값까지 받을때 사용
+    const myproduct = await this.productRepository.findOne({
       where: { id: productId },
     });
 
-    const result = this.productsRepository.save({
+    const result = this.productRepository.save({
       ...myproduct,
       id: productId,
       ...updateProductInput,
     });
-
     return result;
   }
 }

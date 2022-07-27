@@ -62,11 +62,5 @@ export class ProductService {
       throw new UnprocessableEntityException('이미 판매 완료된 상품입니다.');
     }
 
-    // if (product.isSoldout) {
-    //   throw new HttpException(
-    //     '이미 판매 완료된 상품입니다.',
-    //     HttpStatus.UNPROCESSABLE_ENTITY,
-    //   );
-    // }
   }
 }

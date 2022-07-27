@@ -12,7 +12,6 @@ export class Image {
   @Column()
   isMain: boolean;
 
-  // 상품연결
   @ManyToOne(() => Product)
   product: Product;
 }

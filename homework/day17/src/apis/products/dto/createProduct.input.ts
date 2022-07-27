@@ -1,4 +1,4 @@
-import { Field, InputType } from '@nestjs/graphql';
+import { Field, Float, InputType, Int } from '@nestjs/graphql';
 import { Min } from 'class-validator';
 
 @InputType()
@@ -6,16 +6,16 @@ export class CreateProductInput {
   @Field(() => String)
   name: string;
 
-  @Field(() => Number)
+  @Min(0) // main에 app.useGlobalPipes(new ValidationPipe()); 추가
+  @Field(() => Int)
   price: number;
 
   @Field(() => String)
-  description: string;
+  level: string;
 
-  @Field(() => String)
-  image: string;
+  @Field(() => Float)
+  starRate: number;
 
-  @Min(0)
-  @Field(() => String)
-  subCategoryId: string;
+  @Field(() => Boolean)
+  isDiploma: boolean;
 }

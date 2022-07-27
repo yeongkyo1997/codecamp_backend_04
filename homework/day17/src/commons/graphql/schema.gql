@@ -1,0 +1,38 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Product {
+  id: String!
+  name: String!
+  price: Int!
+  level: String!
+  starRate: Float!
+  isDiploma: Boolean!
+}
+
+type Query {
+  fetchProducts: [Product!]!
+  fetchProduct(productId: String!): Product!
+}
+
+type Mutation {
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
+}
+
+input CreateProductInput {
+  name: String!
+  price: Int!
+  level: String!
+  starRate: Float!
+  isDiploma: Boolean!
+}
+
+input UpdateProductInput {
+  name: String
+  price: Int
+  level: String
+  starRate: Float
+  isDiploma: Boolean
+}

@@ -1,4 +1,4 @@
-import { Field, Float, ObjectType } from '@nestjs/graphql';
+import { Field, Float, Int, ObjectType } from '@nestjs/graphql';
 import { Payment } from 'src/apis/payments/entities/payment.entity';
 import { ProductDesc } from 'src/apis/productDesc/entities/productDesc.entity';
 import { SubCategory } from 'src/apis/subCategories/entities/subCategory.entity';
@@ -27,50 +27,35 @@ export class Product {
   name: string;
 
   @Column()
-  @Field(() => Number)
+  @Field(() => Int)
   price: number;
 
   @Column()
   @Field(() => String)
   level: string;
 
-  @Column({ unsigned: true })
+  @Column({ nullable: true, default: 0.0 })
   @Field(() => Float)
   starRate: number;
 
-  @Column({ default: false })
+  @Column({ nullable: true, default: 0 })
   @Field(() => Boolean)
   isDiploma: boolean;
 
-  // 설명
   @JoinColumn()
   @OneToOne(() => ProductDesc)
-  @Field(() => ProductDesc)
   productDesc: ProductDesc;
 
-  // 서브카테고리
   @ManyToOne(() => SubCategory)
-  @Field(() => SubCategory)
   subCategory: SubCategory;
 
-  // 유저
   @ManyToOne(() => User)
-  @Field(() => User)
   user: User;
 
-  // 결제
   @ManyToOne(() => Payment)
-  @Field(() => Payment)
   payment: Payment;
 
-  // 태그
   @JoinTable()
   @ManyToMany(() => Tag, (tags) => tags.products)
-  @Field(() => [Tag])
   tags: Tag[];
-
-  // 상품설명
-  @OneToOne(() => ProductDesc)
-  @Field(() => ProductDesc)
-  description: ProductDesc;
 }

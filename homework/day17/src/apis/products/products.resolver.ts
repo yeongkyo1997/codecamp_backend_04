@@ -1,32 +1,39 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { CreateProductInput } from './dto/createProduct.input';
+import { UpdateProductInput } from './dto/updateProduct.input';
 import { Product } from './entities/product.entity';
-import { ProductsService } from './products.service';
+import { ProductService } from './products.service';
 
 @Resolver()
-export class ProductsResolver {
-  constructor(private readonly productsService: ProductsService) {}
+export class ProductResolver {
+  constructor(
+    private readonly productService: ProductService, //
+  ) {}
 
-  // 전체조회
   @Query(() => [Product])
-  getProducts() {
-    return this.productsService.findAll();
+  fetchProducts() {
+    return this.productService.findAll();
   }
 
-  // 하나만 조회
   @Query(() => Product)
-  getProduct(@Args('productId') productId: string) {
-    return this.productsService.findOne({ productId });
+  fetchProduct(
+    @Args('productId') productId: string, //
+  ) {
+    return this.productService.findOne(productId);
   }
 
-  // 새로운 카테고리를 생성하는 API
   @Mutation(() => Product)
-  async createProducts(
-    @Args('productId') productId: string,
-    @Args('createProductInput') createProductInput: CreateProductInput,
+  createProduct(
+    @Args('createProductInput') createProductInput: CreateProductInput, //
   ) {
-    return await this.productsService.create({
-      createProductInput: CreateProductInput,
-    });
+    return this.productService.create({ createProductInput });
+  }
+
+  @Mutation(() => Product)
+  async updateProduct(
+    @Args('productId') productId: string,
+    @Args('updateProductInput') updateProductInput: UpdateProductInput,
+  ) {
+    return this.productService.update({ productId, updateProductInput });
   }
 }

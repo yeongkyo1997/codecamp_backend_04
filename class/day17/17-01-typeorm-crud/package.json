@@ -1,5 +1,5 @@
 {
-  "name": "aaa",
+  "name": "day16-nestjs",
   "version": "0.0.1",
   "description": "",
   "author": "",
@@ -21,11 +21,11 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
-    "@nestjs/apollo": "^10.0.17",
+    "@nestjs/apollo": "^10.0.19",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^2.2.0",
     "@nestjs/core": "^9.0.0",
-    "@nestjs/graphql": "^10.0.18",
+    "@nestjs/graphql": "^10.0.21",
     "@nestjs/platform-express": "^9.0.0",
     "@nestjs/typeorm": "^9.0.0",
     "apollo-server-express": "^3.10.0",
