@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Product } from './entities/product.entity';
-import { ProductResolver } from './product.resolver';
-import { ProductService } from './product.service';
+import { ProductResolver } from './products.resolver';
+import { ProductService } from './products.service';
 
 @Module({
   // graphql과 관련

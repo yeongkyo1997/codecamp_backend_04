@@ -4,7 +4,7 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { BoardsModule } from './apis/boards/boards.module';
-import { ProductModule } from './apis/products/product.module';
+import { ProductModule } from './apis/products/products.module';
 import { ProductCategoryModule } from './apis/productsCategories/productCategory.module';
 
 @Module({
