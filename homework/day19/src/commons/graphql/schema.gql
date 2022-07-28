@@ -1,0 +1,121 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type PayMethod {
+  id: String!
+  name: String!
+}
+
+type User {
+  id: String!
+  name: String!
+  deletedAt: String!
+  email: String!
+  userPhone: String!
+  description: String!
+}
+
+type Payment {
+  id: String!
+  totalPrice: Float!
+  date: DateTime!
+  user: User!
+  payMethod: PayMethod!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type MainCategory {
+  id: String!
+  name: String!
+}
+
+type SubCategory {
+  id: String!
+  name: String!
+  mainCategory: MainCategory!
+}
+
+type Tag {
+  id: String!
+  name: String!
+  products: [Product!]!
+}
+
+type Product {
+  id: String!
+  name: String!
+  price: Int!
+  level: String!
+  starRate: Float!
+  description: String!
+  isDiploma: Boolean!
+  subCategory: SubCategory!
+  user: User!
+  payment: Payment!
+  tags: [Tag!]!
+}
+
+type Query {
+  fetchProducts: [Product!]!
+  fetchProduct(productId: String!): Product!
+  fetchProductWithDeleted: [Product!]!
+  fetchUsers: [User!]!
+  fetchUser(userId: String!): User!
+}
+
+type Mutation {
+  createProduct(createProductInput: CreateProductInput!): Product!
+  updateProduct(productId: String!, updateProductInput: UpdateProductInput!): Product!
+  deleteProduct(productId: String!): Boolean!
+  restoreProduct(productId: String!): Boolean!
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(userId: String!, updateUserInput: UpdateUserInput!): User!
+  deleteUser(userId: String!): Boolean!
+}
+
+input CreateProductInput {
+  name: String!
+  price: Int!
+  level: String!
+  starRate: Float!
+  description: String!
+  isDiploma: Boolean!
+  subCategoryId: String!
+  userId: String!
+  paymentId: String!
+  tags: [String!]!
+}
+
+input UpdateProductInput {
+  name: String
+  price: Int
+  level: String
+  starRate: Float
+  description: String
+  isDiploma: Boolean
+  subCategoryId: String
+  userId: String
+  paymentId: String
+  tags: [String!]
+}
+
+input CreateUserInput {
+  name: String!
+  password: String!
+  email: String!
+  userPhone: String!
+  description: String!
+}
+
+input UpdateUserInput {
+  name: String
+  password: String
+  email: String
+  userPhone: String
+  description: String
+}
