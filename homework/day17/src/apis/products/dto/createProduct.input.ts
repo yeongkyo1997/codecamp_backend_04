@@ -6,7 +6,7 @@ export class CreateProductInput {
   @Field(() => String)
   name: string;
 
-  @Min(0) // main에 app.useGlobalPipes(new ValidationPipe()); 추가
+  @Min(0)
   @Field(() => Int)
   price: number;
 

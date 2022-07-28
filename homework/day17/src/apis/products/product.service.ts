@@ -1,4 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  UnprocessableEntityException,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Product } from './entities/product.entity';
@@ -27,10 +32,6 @@ export class ProductService {
   }
 
   async update({ productId, updateProductInput }) {
-    // 수정할때만 사용
-    // this.productRepository.update({ id: productId }, { ...updateProductInput });
-
-    // 수정 후 결과값까지 받을때 사용
     const myproduct = await this.productRepository.findOne({
       where: { id: productId },
     });
@@ -41,5 +42,16 @@ export class ProductService {
       ...updateProductInput,
     });
     return result;
+  }
+
+  async checkSale({ productId }) {
+    const product = await this.productRepository.findOne({
+      where: { id: productId },
+    });
+
+    if (product.price === 0) {
+      throw new UnprocessableEntityException('준비중인 상품입니다.');
+    }
+
   }
 }

@@ -2,7 +2,7 @@ import { Args, Mutation, Resolver, Query } from '@nestjs/graphql';
 import { CreateProductInput } from './dto/createProduct.input';
 import { UpdateProductInput } from './dto/updateProduct.input';
 import { Product } from './entities/product.entity';
-import { ProductService } from './products.service';
+import { ProductService } from './product.service';
 
 @Resolver()
 export class ProductResolver {
@@ -34,6 +34,8 @@ export class ProductResolver {
     @Args('productId') productId: string,
     @Args('updateProductInput') updateProductInput: UpdateProductInput,
   ) {
+    await this.productService.checkSale({ productId })
+    
     return this.productService.update({ productId, updateProductInput });
   }
 }

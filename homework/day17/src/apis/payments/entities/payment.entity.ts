@@ -15,10 +15,10 @@ export class Payment {
   id: string;
 
   @Column()
-  payAmount: number;
+  totalPrice: number;
 
   @Column()
-  paymentDate: Date;
+  date: Date;
 
   @ManyToOne(() => User)
   user: User;

@@ -34,11 +34,11 @@ export class Product {
   @Field(() => String)
   level: string;
 
-  @Column({ nullable: true, default: 0.0 })
+  @Column()
   @Field(() => Float)
   starRate: number;
 
-  @Column({ nullable: true, default: 0 })
+  @Column()
   @Field(() => Boolean)
   isDiploma: boolean;
 

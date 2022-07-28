@@ -2,8 +2,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import 'dotenv/config';
+import { ProductModule } from './apis/products/product.module';
 import { GraphQLModule } from '@nestjs/graphql';
-import { ProductModule } from './apis/products/products.module';
 
 @Module({
   imports: [
